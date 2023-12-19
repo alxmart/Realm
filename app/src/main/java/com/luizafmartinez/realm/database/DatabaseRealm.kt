@@ -14,7 +14,6 @@ class DatabaseRealm {
     )
 
     private val realm = Realm.open( configuracao.build() )
-
     fun salvar( usuario: Usuario ) {
 
         realm.writeBlocking {
@@ -35,6 +34,7 @@ class DatabaseRealm {
     }
 
     fun remover(id: ObjectId) {
+
         realm.writeBlocking {
             val usuarioRemover = query<Usuario>("id == $0", id)
                 .find()
@@ -44,6 +44,7 @@ class DatabaseRealm {
     }
 
     fun atualizar( usuario: Usuario) {
+
         realm.writeBlocking {
             val usuarioAtualizar = query<Usuario>("id == $0", usuario.id)
                 .find()
@@ -53,16 +54,7 @@ class DatabaseRealm {
             usuarioAtualizar.idade = usuario.idade
         }
     }
-
-
 }
-
-
-
-
-
-
-
 
 
 
