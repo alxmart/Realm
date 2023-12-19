@@ -28,5 +28,19 @@ class MainActivity : AppCompatActivity() {
             }
             realm.salvar( usuario )
         }
+
+
+        binding.btnListar.setOnClickListener {
+
+            val lista = realm.listar()
+
+            var textoLista = ""
+            lista.forEach() { usuario ->
+                textoLista += "${usuario.nome} - idade: ${usuario.idade} \n"
+
+            }
+            binding.textResultado.text = textoLista
+        }
+
     }
 }
