@@ -41,7 +41,17 @@ class DatabaseRealm {
                 .first()
             delete(usuarioRemover)
         }
+    }
 
+    fun atualizar( usuario: Usuario) {
+        realm.writeBlocking {
+            val usuarioAtualizar = query<Usuario>("id == $0", usuario.id)
+                .find()
+                .first()
+
+            usuarioAtualizar.nome = usuario.nome
+            usuarioAtualizar.idade = usuario.idade
+        }
     }
 
 

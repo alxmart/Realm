@@ -51,6 +51,17 @@ class MainActivity : AppCompatActivity() {
             realm.remover(id)
         }
 
+        binding.btnAtualizar.setOnClickListener {
+            val nomeRecuperado = binding.editNome.text.toString()
+            var idSelecionado = ObjectId.from("6581ce2636882935ffcf1bcc")
+            val usuario = Usuario().apply {
+                id = idSelecionado
+                nome = nomeRecuperado
+                idade = 48
+            }
+            realm.atualizar( usuario )
+        }
+
     }
 
 }
